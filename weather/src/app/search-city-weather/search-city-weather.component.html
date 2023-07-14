@@ -1,8 +1,24 @@
-<div class="form-group col-6 m-auto mt-2 d-flex gap-3">
-    <input 
+<div class="container col-9 m-auto">
+  <h1>Weather On Your Location: {{currentLocationWeather.name}}</h1>
+  <!-- <h2>Temperature: {{currentLocationWeather.main.temp}}{{ '\u00B0' }}C {{currentLocationWeather.weather[0].description}}</h2> -->
+  <div class="form-group  m-auto mt-2">
+    <select
     [(ngModel)]="city"
-    type="text" class="form-control mt-2">
-    <button
-    (click)="searchCurrentWeather()"
-    class="btn btn-primary col-3 mt-2">Search</button>
-  </div>
+    (change)="searchCurrentWeather()" class="form-select">
+      <option value="">Select City</option>
+      <option value="{{i.split('/').pop()}}" *ngFor="let i of cityArr">{{i}}</option>
+    </select>
+ 
+      <div class="top d-flex gap-3">
+        <input 
+        (input)="userChoosenCIty()"
+        [(ngModel)]="city"
+        type="text" class="form-control mt-2">
+        <button
+        [disabled]="isEmpty"
+        (click)="searchCurrentWeather()"
+        class="btn btn-primary col-3 mt-2">Search</button>
+      </div>
+    </div>
+</div>
+<router-outlet></router-outlet>
