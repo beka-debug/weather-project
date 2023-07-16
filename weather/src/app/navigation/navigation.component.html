@@ -1,6 +1,8 @@
 
   
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <nav 
+  [ngClass]="{'navbar-dark bg-dark':isDarkMode}"
+  class="navbar navbar-expand-lg navbar-light bg-light">
     <div class="container-fluid">
       <a class="navbar-brand" routerLink="">TNET Weather</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -17,6 +19,8 @@
           </li>
         </ul>
       </div>
+      <button 
+      (click)="toggleDarkMode()" class="btn btn-dark toggler">{{togglerText}}</button>
     </div>
   </nav>
   

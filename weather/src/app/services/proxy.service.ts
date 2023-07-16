@@ -11,6 +11,7 @@ export class ProxyService {
   todaysWeatherEmitter:EventEmitter<any> = new EventEmitter();
   dailyWeatherEmitter:EventEmitter<any> = new EventEmitter();
   cityNotFoundEmitter:EventEmitter<any> = new EventEmitter();
+  darkModeEmitter:EventEmitter<any> = new EventEmitter();
   notFound:boolean = false
 
   constructor(private http: HttpClient) { }

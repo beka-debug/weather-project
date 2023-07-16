@@ -1,6 +1,8 @@
 <div class="m-auto col-md-9 col-11">
-  <h1 class="mt-2">Weather On Your Location: {{currentLocationWeather.name}}</h1>
-  <!-- <h2>Temperature: {{currentLocationWeather.main.temp}}{{ '\u00B0' }}C {{currentLocationWeather.weather[0].description}}</h2> -->
+  <h1 
+  [ngClass]="{'dark-mode-text':isDarkMode}"
+  class="mt-2">Weather On Your Location: {{currentLocationWeather.name}}</h1>
+  <h2 [ngClass]="{'dark-mode-text':isDarkMode}">Temperature: {{currentLocationWeather.main.temp}}{{ '\u00B0' }}C {{currentLocationWeather.weather[0].description}}</h2>
   <div class="form-group  m-auto mt-2">
     <select
     [(ngModel)]="city"

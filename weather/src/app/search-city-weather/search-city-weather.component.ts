@@ -14,6 +14,7 @@ export class SearchCityWeatherComponent implements OnInit{
   cityArr:string[] = [];
   isEmpty:boolean = true;
   notFound:boolean = false;
+  isDarkMode:boolean = false;
 
   constructor(private proxy:ProxyService, private route:ActivatedRoute,private http:HttpClient){
     this.proxy.getCurrentCoordinates().subscribe((data:any)=>{
@@ -25,6 +26,10 @@ export class SearchCityWeatherComponent implements OnInit{
   ngOnInit(): void {
     this.proxy.getCityNames().subscribe((data:any)=>{
       this.cityArr = data[0].schema.filter((item:any)=> item.name == "timezone")[0].values
+    })
+    this.isDarkMode = localStorage.getItem("darkMode") == "true";
+    this.proxy.darkModeEmitter.subscribe((data:boolean)=>{
+      this.isDarkMode = data
     })
   }
   searchCurrentWeather() {

@@ -5,7 +5,7 @@ import { Component, Input } from '@angular/core';
   templateUrl: './daily-weather-card.component.html',
   styleUrls: ['./daily-weather-card.component.css']
 })
-export class DailyWeatherCardComponent {
+export class DailyWeatherCardComponent{
   @Input()
   dailyWeatherInformation:any={}
 }
