@@ -9,11 +9,15 @@ import { ProxyService } from '../services/proxy.service';
 export class DailyWeatherComponent implements OnInit{
   constructor(private proxy:ProxyService){}
   dailyWeatherArr:any[]=[]
+  notFound:boolean = false;
   ngOnInit(): void {
     this.proxy.dailyWeatherEmitter.subscribe((data:any) =>{
       this.dailyWeatherArr = data.list;
-      console.log(data.list)
     })
+    this.proxy.cityNotFoundEmitter.subscribe((data:boolean)=>{
+      this.notFound = data
+   })
+   
   }
 
 }

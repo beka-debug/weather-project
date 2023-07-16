@@ -1,2 +1,4 @@
 
-<app-weather-card [weatherInfo]="currentWeather"></app-weather-card>
+<app-weather-card 
+*ngIf="!notFound"
+[weatherInfo]="currentWeather"></app-weather-card>

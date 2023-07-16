@@ -9,11 +9,16 @@ import { ProxyService } from '../services/proxy.service';
 export class CurrentWeatherComponent implements OnInit {
   constructor(private proxy:ProxyService){}
   currentWeather:any={}
+  notFound:boolean = false;
   ngOnInit(): void {
     this.proxy.todaysWeatherEmitter.subscribe((data:any) =>{
       this.currentWeather = data;
-      console.log(this.currentWeather)  
     })
+    this.proxy.cityNotFoundEmitter.subscribe((data:boolean)=>{
+       this.notFound = data
+    })
+    
+    
   }
    
 }

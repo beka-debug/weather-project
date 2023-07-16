@@ -13,12 +13,12 @@ export class SearchCityWeatherComponent implements OnInit{
   currentLocationWeather:any={};
   cityArr:string[] = [];
   isEmpty:boolean = true;
+  notFound:boolean = false;
 
   constructor(private proxy:ProxyService, private route:ActivatedRoute,private http:HttpClient){
     this.proxy.getCurrentCoordinates().subscribe((data:any)=>{
        data.subscribe((x:any)=>{
         this.currentLocationWeather = x;
-        console.log(this.currentLocationWeather)
        })
     })
   }
@@ -27,30 +27,55 @@ export class SearchCityWeatherComponent implements OnInit{
       this.cityArr = data[0].schema.filter((item:any)=> item.name == "timezone")[0].values
     })
   }
-
-
-  searchCurrentWeather(){
-
-     this.isEmpty = false
-     if(this.city == ""){
-      this.isEmpty = true
-     }
+  searchCurrentWeather() {
+    this.isEmpty = false;
+    this.notFound = false;
+    this.proxy.notFound = false;
+    if (this.city === "") {
+      this.isEmpty = true;
+      return;
+    }
+  
     const childRoute = this.route.firstChild?.snapshot.routeConfig?.path;
-    if(childRoute == "current"){
-     this.proxy.getCurrentWeather(this.city)
-     .subscribe((data:any) =>{
-      this.proxy.todaysWeatherEmitter.emit(data)
-     })
-    }
-    else if(childRoute == "daily"){
+  
+    if (childRoute === "current") {
+      this.proxy.getCurrentWeather(this.city)
+        .subscribe(
+          (data: any) => {
+            if (data.error) {
+               this.notFound = true;
+               this.proxy.cityNotFoundEmitter.emit(this.notFound)
+            } else {
+              this.proxy.cityNotFoundEmitter.emit(this.notFound)
+              this.proxy.todaysWeatherEmitter.emit(data);
+            }
+          },
+          (error: any) => {
+            this.notFound = true;
+            this.proxy.cityNotFoundEmitter.emit(this.notFound)
+          }
+        );
+
+    } else if (childRoute === "daily") {
       this.proxy.getDailyWeather(this.city)
-      .subscribe((data:any) =>{
-        this.proxy.dailyWeatherEmitter.emit(data)
-       })
+        .subscribe(
+          (data: any) => {
+            if (data.error) {
+              this.notFound = true;
+              this.proxy.cityNotFoundEmitter.emit(this.notFound)
+            } else {
+              this.proxy.cityNotFoundEmitter.emit(this.notFound)
+              this.proxy.dailyWeatherEmitter.emit(data);
+            }
+          },
+          (error: any) => {
+            this.notFound = true;  
+            this.proxy.cityNotFoundEmitter.emit(this.notFound)
+          }
+        );
     }
-    
-     
   }
+  
 
   userChoosenCIty(){
     this.isEmpty = this.city.length > 0 ? false : true;

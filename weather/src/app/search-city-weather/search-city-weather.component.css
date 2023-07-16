@@ -1,12 +1,13 @@
-
-
 h1 {
   margin-top: 20px;
   font-size: 24px;
   font-weight: bold;
 }
-
-
+.not-found {
+  color: red;
+  font-size: 16px;
+  margin-top: 10px;
+}
 
 
 

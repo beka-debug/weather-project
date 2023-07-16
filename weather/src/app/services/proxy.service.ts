@@ -10,6 +10,8 @@ export class ProxyService {
   units:string = "metric"
   todaysWeatherEmitter:EventEmitter<any> = new EventEmitter();
   dailyWeatherEmitter:EventEmitter<any> = new EventEmitter();
+  cityNotFoundEmitter:EventEmitter<any> = new EventEmitter();
+  notFound:boolean = false
 
   constructor(private http: HttpClient) { }
 
