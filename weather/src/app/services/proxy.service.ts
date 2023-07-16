@@ -14,7 +14,7 @@ export class ProxyService {
   constructor(private http: HttpClient) { }
 
   getCurrentWeather(cityName: string) {
-    return this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&appid=${this.apiKey}`);
+    return this.http.get(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=${this.units}&appid=${this.apiKey}`);
   }
 
   getDailyWeather(cityName:string){

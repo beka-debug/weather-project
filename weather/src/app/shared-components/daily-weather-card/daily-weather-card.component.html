@@ -1,8 +1,9 @@
 <div class="card card-body mt-4">
-    <h1>{{dailyWeatherInformation.dt_txt}}</h1>
-    <h1>{{dailyWeatherInformation.main.temp}}</h1>
-    <h1>{{dailyWeatherInformation.weather[0].description}}</h1>
-    <img src="{{'http://openweathermap.org/img/wn/' + dailyWeatherInformation.weather[0].icon + '.png'}}" alt="">
-    <h1>{{dailyWeatherInformation.dt_txt}}</h1>
-    <h1>{{dailyWeatherInformation.dt_txt}}</h1>
+    <h3>Date:{{dailyWeatherInformation.dt_txt.split(" ")[0]}}</h3>
+    <h3>Time:{{dailyWeatherInformation.dt_txt.split(" ")[1]}}</h3>
+    <p>Temperature:{{dailyWeatherInformation.main.temp | round }}&#x2103;</p>
+    <div class="mid d-flex align-items-center">
+      <p>{{dailyWeatherInformation.weather[0].description}}</p>
+      <img src="{{'http://openweathermap.org/img/wn/' + dailyWeatherInformation.weather[0].icon + '.png'}}" alt="">
+    </div>
 </div>

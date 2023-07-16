@@ -3,9 +3,11 @@ import { RouterModule, Routes } from '@angular/router';
 import { SearchCityWeatherComponent } from './search-city-weather/search-city-weather.component';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 import { DailyWeatherComponent } from './daily-weather/daily-weather.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
-  {path:'',component:SearchCityWeatherComponent,children:[
+  {path:'',component:HomeComponent},
+  {path:'search',component:SearchCityWeatherComponent,children:[
     {path:'current',component:CurrentWeatherComponent},
     {path:'daily',component:DailyWeatherComponent}
   ]},

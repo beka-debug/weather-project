@@ -1,0 +1,52 @@
+.weather-container {
+    text-align: center;
+    padding: 20px;
+  }
+  
+  .page-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .page-description {
+    margin-bottom: 20px;
+  }
+  
+  .card {
+    background-color: #f1f1f1;
+    border-radius: 5px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+  
+  .card h2 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .card p {
+    margin-bottom: 10px;
+  }
+  
+  .animations-container {
+    margin-top: 40px;
+  }
+  
+  .animated-box {
+    width: 200px;
+    height: 100px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  
+
+ 

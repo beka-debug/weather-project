@@ -18,6 +18,7 @@ export class SearchCityWeatherComponent implements OnInit{
     this.proxy.getCurrentCoordinates().subscribe((data:any)=>{
        data.subscribe((x:any)=>{
         this.currentLocationWeather = x;
+        console.log(this.currentLocationWeather)
        })
     })
   }
@@ -47,6 +48,7 @@ export class SearchCityWeatherComponent implements OnInit{
         this.proxy.dailyWeatherEmitter.emit(data)
        })
     }
+    
      
   }
 

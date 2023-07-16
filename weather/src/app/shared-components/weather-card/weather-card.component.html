@@ -1,5 +1,12 @@
-<div class="card card-body" *ngIf="showCard">
-    <h1>{{weatherInfo.name}}</h1>
-    <h1>{{weatherInfo.name}}</h1>
-    <h1>{{weatherInfo.name}}</h1>
+<div class="card card-body col-md-9 m-auto mt-3 col-11" *ngIf="showCard">
+    <h1>Location:{{weatherInfo.name}}</h1>
+    <div class="mid d-flex align-items-center">
+      <h1>Weather:{{weatherInfo.weather[0].main}} - {{weatherInfo.weather[0].description}}</h1>
+      <img src="{{'http://openweathermap.org/img/wn/' + weatherInfo.weather[0].icon + '.png'}}" alt="">
+    </div>
+    <h1>Temperature{{weatherInfo.main.temp | round}}&#x2103; Feels Like: {{weatherInfo.main.feels_like | round}} &#x2103;</h1>
+    <p>Humidity: {{weatherInfo.main.humidity}}</p>
+    <p>Sea Level:</p>
+    <p>Wind Speed:{{weatherInfo.wind.speed}}</p>
+    <p>Visibility: {{weatherInfo.visibility}}</p>
 </div>

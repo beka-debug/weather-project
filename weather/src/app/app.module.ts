@@ -10,6 +10,8 @@ import { DailyWeatherComponent } from './daily-weather/daily-weather.component';
 import { CurrentWeatherComponent } from './current-weather/current-weather.component';
 import { WeatherCardComponent } from './shared-components/weather-card/weather-card.component';
 import { DailyWeatherCardComponent } from './shared-components/daily-weather-card/daily-weather-card.component';
+import { RoundPipe } from './pipes/round.pipe';
+import { HomeComponent } from './home/home.component';
 
 
 @NgModule({
@@ -21,6 +23,8 @@ import { DailyWeatherCardComponent } from './shared-components/daily-weather-car
     CurrentWeatherComponent,
     WeatherCardComponent,
     DailyWeatherCardComponent,
+    RoundPipe,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
